@@ -1,6 +1,7 @@
 package com.queue;
 
 import java.util.LinkedList;
+import java.util.List;
 import java.util.Queue;
 
 public class ReverseTheQueue {
@@ -22,8 +23,6 @@ public class ReverseTheQueue {
 
 
         while(q.iterator().hasNext()){
-
-            System.out.println("here");
             if(lastElIndex != 0){
                 bq.add(q.poll());
                 lastElIndex = q.size();
@@ -42,6 +41,23 @@ public class ReverseTheQueue {
         }
 
         return doReverse(bq , q, result);
+    }
+
+    public static Queue<Integer> doReverseWithArray(Queue<Integer> q){
+        int[] arr = new int[q.size()];
+
+        int lastElIndex = q.size() -1;
+
+        while(q.iterator().hasNext()){
+            arr[lastElIndex] = q.poll();
+            lastElIndex --;
+        }
+
+        for(int i : arr){
+            q.add(i);
+        }
+
+        return q;
     }
 
     public static void main(String[] args) {
