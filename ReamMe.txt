@@ -1,0 +1,10 @@
+1. stack
+2. queue
+3. Big O notation
+4. Scheduling
+5. Memory
+6. hasTable
+7. Array
+8. Proces
+9. Thread
+10. Concurrency Controll(semaPhore , lock)
