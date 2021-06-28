@@ -15,15 +15,17 @@ public class NearByDistance {
             });
             int bestPathCounetr = 0;
             int bestPath = dist.size() / 2;
-            for (Integer vl : dist ) {
+            /*for (Integer vl : dist ) {
                 if (bestPath == bestPathCounetr) {
                     return vl;
                 }
                 bestPathCounetr++;
 
-            }
+            }*/
 
-            return null;
+
+
+            return dist.get(bestPath);
         }
 
     public Integer findBestPlace(List<Map<String, Boolean>> blocks, List<String> request){

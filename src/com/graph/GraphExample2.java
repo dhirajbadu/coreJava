@@ -43,6 +43,29 @@ public class GraphExample2 {
         return visited;
     }
 
+    Map<List<Vertex> , String> depthFindPath(Vertex from ,  Vertex to) {
+        Set<Integer> visited = new LinkedHashSet<Integer>();
+        Stack<Vertex> st = new Stack<>();
+        Map<List<Vertex> , String> path= new HashMap<>();
+        st.push(from);
+        while(!st.isEmpty()){
+            Vertex v = st.pop();
+            for(Vertex adj : grap.get(v)){
+                if(!visited.contains(adj.value)){
+                    visited.add(adj.value);
+                    st.push(adj);
+                }
+
+                if(adj.value == to.value && !path.containsKey(grap.get(adj))){
+                    path.put(grap.get(adj) , "" + path.size()+1);
+                    break;
+                }
+            }
+        }
+
+        return path;
+    }
+
 
     Set<Integer> breadthFirstTraversal(Vertex root) {
         Set<Integer> visited = new LinkedHashSet<Integer>();
@@ -92,14 +115,16 @@ public class GraphExample2 {
 
        // gp.print();
 
-        Set<Integer> visited = gp.depthFirstTraversal(v0);
-        System.out.print("root");
-        for(int v : visited){
-            System.out.print("->" + v);
+        Map<List<Vertex> , String> visited = gp.depthFindPath(v2 , v4);
+        for(List<Vertex> vs : visited.keySet()){
+            System.out.println("\n->");
+            for(Vertex v : vs){
+                System.out.print("->" + v.value);
+            }
         }
 
         System.out.println("\n-----------");
-        Set<Integer> visited1 = gp.breadthFirstTraversal(v0);
+        Set<Integer> visited1 = gp.breadthFirstTraversal(v2);
         System.out.print("root");
         for(int v : visited1){
             System.out.print("->" + v);
